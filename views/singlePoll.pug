@@ -1,0 +1,65 @@
+html
+  head
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.bundle.js")
+    script(src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js", type="text/javascript")
+
+  body
+    include includes/navbar.pug
+    div(class="container-fluid")
+    div(class="row")
+      div(class="col-md-4")
+        div(class="col-md-12 col-md-offset-1")
+          form(method="post")
+            h1= thisPoll.title
+            each voterr in thisPoll.usersVoted
+              if voterr === voter
+                p (You already voted)
+            br
+            each choice in thisPoll.choices
+              div(class="radio")
+                label
+                  input(type="radio", name="vote", value=thisPoll.choices.indexOf(choice))
+                  =choice.choice + ' (' + choice.votes + ' total votes)'
+            br
+            button(type="submit", value="Vote", class="btn btn-default") Vote
+      div(class="col-md-6")
+        canvas(id="chart")
+          script(type="text/javascript").
+            var ctx = document.getElementById("chart");
+            var poll = #{thisPoll};
+
+            var pollLabels = [];
+            var pollData = [];
+
+            for (var i = 0; i < poll.choices.length; i++) {
+              pollLabels.push(poll.choices[i].choice);
+              pollData.push(poll.choices[i].votes);
+            }
+
+            var chart = new Chart(ctx, {
+              type: 'pie',
+              data: {
+                  labels: pollLabels,
+                  datasets: [{
+                      data: pollData,
+                      backgroundColor: [
+                          'green',
+                          'blue',
+                          'red',
+                          'purple',
+                          'black',
+                          'grey',
+                          'orange',
+                          'violet',
+                          'yellow',
+                          'pink',
+                          'brown',
+                          'cyan'
+
+                      ],
+                      borderWidth: 3
+                  }]
+              },
+              options: {
+              }
+            });

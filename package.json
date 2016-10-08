@@ -1,0 +1,22 @@
+{
+  "name": "voting-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Paavo Nätti",
+  "license": "ISC",
+  "dependencies": {
+    "async": "2.0.1",
+    "body-parser": "1.15.2",
+    "express": "4.14.0",
+    "express-session": "1.14.1",
+    "mongodb": "2.2.10",
+    "mongoose": "4.6.0",
+    "promise": "7.1.1",
+    "pug": "2.0.0-beta6",
+    "req-flash": "0.0.3"
+  }
+}

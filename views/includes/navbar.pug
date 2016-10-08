@@ -1,0 +1,29 @@
+html
+  head
+    link(rel="stylesheet", type="text/css", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css")
+
+  body
+    nav(class="navbar navbar-default navbar-static-top")
+      div(class="container-fluid")
+        div(class="collapse navbar-collapse", id="bs-example-navbar-collapse-1")
+          ul(class="nav navbar-nav")
+            li
+              a(href="/new") New poll
+            li
+              a(href="/polls") Polls
+            li
+              a(href="/mypolls") My polls
+          ul(class="nav navbar-nav navbar-right")
+            if user != null
+              li
+                a(href="/logout") Logout #{user}
+            else
+              li
+                a(href="/register") Register
+              li
+                a(href="/signin") Sign in
+
+    div(class="navbar navbar-fixed-bottom")
+      div(class="inverted link list")
+        p(class="item") Made by Paavo Nätti
+        a(class="item" href="https://github.com/pavezzo/votingapp") Github repo

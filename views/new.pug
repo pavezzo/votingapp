@@ -1,0 +1,36 @@
+html
+  title
+
+  head
+    include includes/navbar.pug
+    br
+    div(class="container-fluid")
+      div(class="row")
+        div(class="col-md-6")
+          div(class="col-md-12 col-md-offset-1")
+            form(id="pollForm", method="post")
+              div(class="col-md-10 input-group input-group-lg")
+                input(type="text", name="title", class="form-control", placeholder="Title", autocomplete="off" required)
+                br
+              br
+              div(class="col-md-6 input-group", id="inputChoices")
+                input(type="text", name="choice", class="form-control", placeholder="Choice", autocomplete="off" required)
+                br
+                input(type="text", name="choice", class="form-control", placeholder="Choice", autocomplete="off")
+              br
+              div(class="btn-group")
+                button(type="button", onClick="newInput()", class="btn btn-default") New choice
+                button(type="submit", value="submit", class="btn btn-success") Submit
+
+            script.
+              function newInput() {
+                pollForm = document.getElementById("pollForm");
+                var input = document.createElement("input");
+                input.setAttribute("type", "text");
+                input.setAttribute("name", "choice");
+                input.setAttribute("class", "form-control");
+                input.setAttribute("placeholder", "Choice");
+                input.setAttribute("autocomplete", "off");
+                inputChoices.appendChild(document.createElement("br"));
+                inputChoices.appendChild(input);
+              }
